@@ -139,11 +139,11 @@ int main()
     struct tcphdr *tcph_psd = (struct tcphdr*)(psdheader + sizeof(struct psdhdr));  
 
 
-    //inet_pton(AF_INET, (char *)("192.168.101.132"), (void*)&saddr.sin_addr);
-    inet_pton(AF_INET, (char *)("127.0.0.1"), (void*)&saddr.sin_addr);
+    inet_pton(AF_INET, (char *)("192.168.101.132"), (void*)&saddr.sin_addr);
+    //inet_pton(AF_INET, (char *)("127.0.0.1"), (void*)&saddr.sin_addr);
     saddr.sin_port = htons(SOU_PORT);    
-    //inet_pton(AF_INET, (char * )("192.168.101.193"), (void*)&daddr.sin_addr);  
-    inet_pton(AF_INET, (char * )("127.0.0.1"), (void*)&daddr.sin_addr);
+    inet_pton(AF_INET, (char * )("192.168.101.193"), (void*)&daddr.sin_addr);  
+    //inet_pton(AF_INET, (char * )("127.0.0.1"), (void*)&daddr.sin_addr);
     daddr.sin_port = htons(DES_PORT);   
 
     ip_h->ih_verlen = 0b01000101;                          //ipv:4(0100),header len：20×8/（8*4）(0101)
