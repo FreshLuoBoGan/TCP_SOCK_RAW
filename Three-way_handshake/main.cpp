@@ -8,7 +8,7 @@
 #include <string.h>
 
 #define SOU_PORT 789
-#define DES_PORT 897
+#define DES_PORT 80
 
 /* 用于计算TCP校验和的伪头部 */  
 struct psdhdr{  
@@ -142,6 +142,7 @@ int main()
     inet_pton(AF_INET, (char *)("192.168.101.132"), (void*)&saddr.sin_addr);
     //inet_pton(AF_INET, (char *)("127.0.0.1"), (void*)&saddr.sin_addr);
     saddr.sin_port = htons(SOU_PORT);    
+    //inet_pton(AF_INET, (char * )("61.135.169.125"), (void*)&daddr.sin_addr); 
     inet_pton(AF_INET, (char * )("192.168.101.193"), (void*)&daddr.sin_addr);  
     //inet_pton(AF_INET, (char * )("127.0.0.1"), (void*)&daddr.sin_addr);
     daddr.sin_port = htons(DES_PORT);   
