@@ -64,7 +64,7 @@ int main()
     arp_packet.eth_header.h_source[2] = 0xcc;
     arp_packet.arp_header.Send_Mac[3] = 0xc9;
     arp_packet.eth_header.h_source[4] = 0x2e;
-    arp_packet.eth_header.h_source[5] = 0x11;
+    arp_packet.eth_header.h_source[5] = 0xf0;
 
 
     arp_packet.eth_header.h_proto = htons(ETH_P_ARP);
@@ -79,12 +79,12 @@ int main()
     arp_packet.arp_header.Send_Mac[2] = 0xcc;
     arp_packet.arp_header.Send_Mac[3] = 0xc9;
     arp_packet.arp_header.Send_Mac[4] = 0x2e;
-    arp_packet.arp_header.Send_Mac[5] = 0x11;
+    arp_packet.arp_header.Send_Mac[5] = 0xf0;
 
 
     inet_pton(AF_INET, (char *)("192.168.101.254"), (void*)&addr.sin_addr);
     arp_packet.arp_header.Send_IP = addr.sin_addr.s_addr;
-    inet_pton(AF_INET, (char *)("192.168.101.168"), (void*)&addr.sin_addr);
+    inet_pton(AF_INET, (char *)("192.168.101.193"), (void*)&addr.sin_addr);
     arp_packet.arp_header.Target_IP = addr.sin_addr.s_addr;
 
     //socket_fd = socket(PF_PACKET,SOCK_DGRAM,htons(ETH_P_ARP));//获取到的包，没有Ethernet II；
@@ -103,7 +103,7 @@ int main()
         struct sockaddr to,from;
         socklen_t fromlen=0;
         strcpy(to.sa_data,"enp0s25");
-       int n =  sendto(socket_fd,&arp_packet,sizeof( ARPPACKET),0,&to,sizeof(struct sockaddr));
+        int n =  sendto(socket_fd,&arp_packet,sizeof( ARPPACKET),0,&to,sizeof(struct sockaddr));
         //recvfrom(socket_fd,recv_buf,1024,0,&from,&fromlen);
         //int n = send(socket_fd,(char *)&arp_packet,sizeof(ARPPACKET),0);
         printf("%d\n",n);
